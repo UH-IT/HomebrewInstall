@@ -292,6 +292,7 @@ EOABORT
 ohai "Downloading and installing Homebrew..."
 Dir.chdir HOMEBREW_REPOSITORY do
   if git
+    system "su", "-", "#{ENV["USER"]}"
     # we do it in four steps to avoid merge errors when reinstalling
     system git, "init", "-q"
 
