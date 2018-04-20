@@ -8,6 +8,8 @@ HOMEBREW_CACHE = "#{ENV["HOME"]}/Library/Caches/Homebrew".freeze
 HOMEBREW_OLD_CACHE = "/Library/Caches/Homebrew".freeze
 BREW_REPO = "https://github.com/Homebrew/brew".freeze
 CORE_TAP_REPO = "https://github.com/Homebrew/homebrew-core".freeze
+USERNAME = `/bin/ls -l /dev/console | /usr/bin/awk '{ print $3 }' | tr -d '\n'`.freeze
+ENV["USER"] = "#{USERNAME}"
 
 # no analytics during installation
 ENV["HOMEBREW_NO_ANALYTICS_THIS_RUN"] = "1"
