@@ -310,8 +310,12 @@ Dir.chdir HOMEBREW_REPOSITORY do
 
     system "ln", "-sf", "#{HOMEBREW_REPOSITORY}/bin/brew", "#{HOMEBREW_PREFIX}/bin/brew"
 
-    system "#{HOMEBREW_PREFIX}/bin/brew", "update", "--force"
     `sudo chown -R #{ENV["USER"]}:admin #{HOMEBREW_REPOSITORY}`
+    `sudo mkdir /Users/#{ENV["USER"]}/Library/Caches/Homebrew/`
+    `sudo chown -R #{ENV["USER"]}:admin /Users/#{ENV["USER"]}/Library/Caches/Homebrew/`
+    `sudo chmod 777 /usr/local/bin/`
+    #system "sudo", "-i", "--user=#{ENV["USER"]}", "sh", "-c", "\"#{HOMEBREW_PREFIX}/bin/brew", "update", "--force\""
+    `sudo -i --user=#{ENV["USER"]} sh -c "#{HOMEBREW_PREFIX}/bin/brew update --force"`
   else
     # -m to stop tar erroring out if it can't modify the mtime for root owned directories
     # pipefail to cause the exit status from curl to propagate if it fails
