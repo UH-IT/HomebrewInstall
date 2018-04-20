@@ -82,10 +82,10 @@ end
 
 def wait_for_user
   puts
-  puts "Press RETURN to continue or any other key to abort"
-  c = getc
+  #puts "Press RETURN to continue or any other key to abort"
+  #c = getc
   # we test for \r and \n because some stuff does \r instead
-  abort unless (c == 13) || (c == 10)
+  #abort unless (c == 13) || (c == 10)
 end
 
 class Version
